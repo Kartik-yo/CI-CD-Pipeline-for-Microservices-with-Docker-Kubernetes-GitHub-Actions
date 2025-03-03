@@ -43,9 +43,13 @@ jobs:
         run: |
           cd backend
           npm run coverage
-          sonar-scanner
+          sonar-scanner \
+            -Dsonar.projectKey=backend-app \
+            -Dsonar.organization=kartikyo \
+            -Dsonar.host.url=https://sonarcloud.io
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
 
   docker:
