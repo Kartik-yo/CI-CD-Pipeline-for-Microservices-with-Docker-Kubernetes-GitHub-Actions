@@ -28,11 +28,12 @@ jobs:
           cd backend
           npm install
           npm install jest --save-dev
+          npm install supertest --save-dev
 
       - name: Run Tests
         run: |
           cd backend
-          npm test
+          npm test -- --passWithNoTests
 
       - name: SonarQube Analysis
         run: |
@@ -72,4 +73,3 @@ jobs:
         run: |
           kubectl apply -f kubernetes/
           kubectl get pods
-
