@@ -35,6 +35,10 @@ jobs:
           cd backend
           npm test -- --passWithNoTests
 
+      - name: Install SonarQube Scanner
+        run: |
+          npm install -g sonarqube-scanner
+
       - name: SonarQube Analysis
         run: |
           cd backend
@@ -42,6 +46,7 @@ jobs:
           sonar-scanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
   docker:
     needs: build
